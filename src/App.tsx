@@ -1,25 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import ProductList from './pages/ProductList';
+import 'antd/dist/reset.css';  // Ganti dari 'antd/dist/antd.css' ke 'antd/dist/reset.css' jika menggunakan versi terbaru
 import './App.css';
 
-function App() {
+const queryClient = new QueryClient();
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <div className="App">
+        <h1>Healthcare Product List</h1>
+        <ProductList />
+      </div>
+    </QueryClientProvider>
   );
 }
 
